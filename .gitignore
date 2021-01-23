@@ -4,6 +4,7 @@
 # User-specific stuff
 /data
 /.idea
+.idea/
 .idea
 __pycache__
 
