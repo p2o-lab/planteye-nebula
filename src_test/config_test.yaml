@@ -1,0 +1,37 @@
+---
+opcua:
+  url: opc.tcp://127.0.0.1:53530/OPCUA/SimulationServer
+  number_of_reconnections: 1
+  reconnect_interval: 10000
+buffer:
+  max_size: 10000
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  user: root
+  password: root
+  database: M01
+  db_user: db_user
+  db_password: db_password
+  reconnect_interval: 10000
+  write_interval: 10000
+event_logger:
+  publish: false
+  print_level: DEBUG
+metrics:
+- metric_id: '1'
+  measurement: data_assemblies
+  tagname: F1011
+  variable: V
+  nodeNamespace: 2
+  nodeId: 1012
+  method: polled
+  interval: 1000
+- metric_id: '2'
+  measurement: data_assemblies
+  tagname: F1011
+  variable: VSclMax
+  nodeNamespace: 2
+  nodeId: 1010
+  method: polled
+  interval: 1000

@@ -1,0 +1,224 @@
+{
+    "definitions": {},
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "title": "The Configuration Schema for Nebula of PlantEye",
+    "required": [
+        "opcua",
+        "buffer",
+        "influxdb",
+        "event_logger",
+        "metrics"
+    ],
+    "properties": {
+        "opcua": {
+            "type": "object",
+            "title": "The Opcua Schema",
+            "required": [
+                "url",
+                "number_of_reconnections",
+                "reconnect_interval"
+            ],
+            "properties": {
+                "url": {
+                    "$id": "#/properties/opcua/properties/url",
+                    "type": "string",
+                    "title": "The Url Schema",
+                    "default": "",
+                    "pattern": "^(.*)$"
+                },
+                "number_of_reconnections": {
+                    "$id": "#/properties/opcua/properties/number_of_reconnections",
+                    "type": "integer",
+                    "title": "Number of reconnection retries",
+                    "default": -1
+                },
+                "reconnect_interval": {
+                    "$id": "#/properties/opcua/properties/reconnect_interval",
+                    "type": "integer",
+                    "title": "Time interval between reconnection attempts",
+                    "default": 10000
+                }
+            }
+        },
+        "buffer": {
+            "type": "object",
+            "title": "The buffer Schema",
+            "required": [
+                "max_size"
+            ],
+            "properties": {
+                "max_size": {
+                    "$id": "#/properties/buffer/properties/buffer_size",
+                    "type": "integer",
+                    "title": "Capacity of buffer",
+                    "default": 10000
+                }
+            }
+        },
+        "influxdb": {
+            "$id": "#/properties/influx",
+            "type": "object",
+            "title": "The Influx Schema",
+            "required": [
+                "host",
+                "port",
+                "user",
+                "password",
+                "database",
+                "db_user",
+                "db_password",
+                "reconnect_interval",
+                "write_interval"
+            ],
+            "properties": {
+                "host": {
+                    "$id": "#/properties/influx/properties/host",
+                    "type": "string",
+                    "title": "Influxdb host",
+                    "default": "",
+                    "pattern": "^(.*)$"
+                },
+                "port": {
+                    "$id": "#/properties/influx/properties/port",
+                    "type": "integer",
+                    "title": "Port number",
+                    "default": 8086
+                },
+                "user": {
+                    "$id": "#/properties/influx/properties/user",
+                    "type": "string",
+                    "title": "Username to access influxdb server",
+                    "default": "root"
+                },
+                "password": {
+                    "$id": "#/properties/influx/properties/password",
+                    "type": "string",
+                    "title": "Password to access influxdb server",
+                    "default": "root"
+                },
+                "database": {
+                    "$id": "#/properties/influx/properties/database",
+                    "type": "string",
+                    "title": "Database name"
+                },
+                "db_user": {
+                    "$id": "#/properties/influx/properties/db_user",
+                    "type": "string",
+                    "title": "Username to access selected database",
+                    "default": "root"
+                },
+                "db_password": {
+                    "$id": "#/properties/influx/properties/db_password",
+                    "type": "string",
+                    "title": "Password to access selected database",
+                    "default": "root"
+                },
+                "reconnect_interval": {
+                    "$id": "#/properties/influx/properties/reconnect_interval",
+                    "type": "integer",
+                    "title": "Time interval between reconnection attempts",
+                    "default": 10000
+                },
+                "write_interval": {
+                    "$id": "#/properties/influx/properties/write_interval",
+                    "type": "integer",
+                    "title": "Time interval between two writing routines",
+                    "default": 10000
+                }
+            }
+        },
+
+        "event_logger": {
+            "type": "object",
+            "title": "Event logger",
+            "required": [
+                "publish",
+                "print_level"
+            ],
+            "properties": {
+                "publish": {
+                    "$id": "#/properties/event_logger/properties/publish",
+                    "type": "boolean",
+                    "title": "Whether publish events or not",
+                    "default": false
+                },
+                "print_level": {
+                    "$id": "#/properties/event_logger/properties/print_level",
+                    "type": "string",
+                    "title": "Threshold level for outputting event messages",
+                    "default": "INFO"
+                }
+            }
+        },
+
+        "metrics": {
+            "$id": "#/properties/metrics",
+            "type": "array",
+            "title": "The Metrics Schema",
+            "items": {
+                "$id": "#/properties/metrics/items",
+                "type": "object",
+                "title": "The Items Schema",
+                "required": [
+                    "metric_id",
+                    "measurement",
+                    "tagname",
+                    "variable",
+                    "nodeNamespace",
+                    "nodeId",
+                    "method",
+                    "interval"
+                ],
+                "properties": {
+                    "metric_id": {
+                        "$id": "#/properties/metrics/items/properties/metric_id",
+                        "type": "string",
+                        "title": "Metric ID"
+                    },
+                    "measurement": {
+                        "$id": "#/properties/metrics/items/properties/measurement",
+                        "type": "string",
+                        "title": "Measurement"
+                    },
+                    "tagname": {
+                        "$id": "#/properties/metrics/items/properties/tagname",
+                        "type": "string",
+                        "title": "Tag name"
+                    },
+                    "variable": {
+                        "$id": "#/properties/metrics/items/properties/variable",
+                        "type": "string",
+                        "title": "Variable name"
+                    },
+                    "nodeNamespace": {
+                        "$id": "#/properties/metrics/items/properties/nodens",
+                        "type": "integer",
+                        "title": "Node namespace"
+                    },
+                    "nodeId": {
+                        "$id": "#/properties/metrics/items/properties/nodeid",
+                        "type": ["string", "integer"],
+                        "title": "NodeId"
+                    },
+                    "method": {
+                        "$id": "#/properties/metrics/items/properties/method",
+                        "type": "string",
+                        "title": "Monitoring method",
+                        "default": "polled",
+                        "enum": [
+                            "polled",
+                            "subscription"
+                        ]
+                    },
+                    "interval": {
+                        "$id": "#/properties/metrics/items/properties/interval",
+                        "type": "integer",
+                        "title": "Polling interval if applicable",
+                        "default": 1000
+                    }
+                }
+            }
+        }
+    }
+}
