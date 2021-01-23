@@ -5,10 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src_test" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/../common" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="common" />
   </component>
   <component name="PackageRequirementsSettings">
     <option name="versionSpecifier" value="Strong equality (==x.y.z)" />

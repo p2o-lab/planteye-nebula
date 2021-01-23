@@ -3,3 +3,4 @@ influxdb==5.3.1
 PyYAML==5.3.1
 pytest==6.2.1
 jsonschema==3.2.0
+-e git://github.com/vkhaydarov/planteye-common.git#egg=planteye-common

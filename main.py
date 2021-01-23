@@ -1,4 +1,4 @@
-from opcua_listener import OPCUAListener
+from src.opcua_listener import OPCUAListener
 from influxdb_writer import InfluxDBWriter
 from Buffer import Buffer
 import schema
@@ -12,7 +12,8 @@ if __name__ == '__main__':
         cfg = yaml.safe_load(config_file)
 
     # Validate config
-    validation_res, validation_msg = schema.validate_cfg(cfg)
+    json_schema = 'src/config_schema.json'
+    validation_res, validation_msg = schema.validate_cfg(cfg, json_schema)
     if not validation_res:
         print(validation_msg)
         exit(1)
