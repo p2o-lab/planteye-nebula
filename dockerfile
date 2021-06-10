@@ -13,7 +13,7 @@ RUN pip install -r requirements.txt
 
 # copy files into the working directory
 COPY src/ src/
-COPY config.yaml .
+COPY config.yaml config.yaml
 COPY main.py .
 
 # command to run on container start
