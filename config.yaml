@@ -1,6 +1,6 @@
 ---
 opcua:
-  url: opc.tcp://opcuademo.sterfive.com:26543
+  url: opc.tcp://10.6.51.130:4840
   number_of_reconnections: -1
   reconnect_interval: 10000
 buffer:
@@ -10,7 +10,7 @@ influxdb:
   port: 8086
   user: root
   password: root
-  database: M01
+  database: M13
   db_user: db_user
   db_password: db_password
   reconnect_interval: 10000
@@ -21,25 +21,33 @@ event_logger:
 metrics:
 - metric_id: '1'
   measurement: data_assemblies
-  tagname: F1011
-  variable: TagDescription
-  nodeNamespace: 7
-  nodeId: Scalar_Simulation_String
+  tagname: F3021
+  variable: V
+  nodeNamespace: 4
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Sensors.F3021.V'
   method: polled
   interval: 1000
 - metric_id: '2'
   measurement: data_assemblies
-  tagname: F1011
-  variable: V
-  nodeNamespace: 7
-  nodeId: Scalar_Simulation_Double
+  tagname: VC3020
+  variable: Pos
+  nodeNamespace: 4
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.Pos'
   method: polled
   interval: 1000
 - metric_id: '3'
   measurement: data_assemblies
-  tagname: F1011
-  variable: OpenFbk
-  nodeNamespace: 7
-  nodeId: Scalar_Simulation_Boolean
-  method: subscription
+  tagname: VC3020
+  variable: PosFbk
+  nodeNamespace: 4
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.PosFbk'
+  method: polled
+  interval: 1000
+- metric_id: '4'
+  measurement: data_assemblies
+  tagname: VV3030
+  variable: Ctrl
+  nodeNamespace: 4
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VV3030.Ctrl'
+  method: polled
   interval: 1000

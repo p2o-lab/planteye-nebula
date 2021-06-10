@@ -69,6 +69,8 @@ class OPCUAListener:
 
         # Creation of OPC UA client object
         self.client = Client(self.uri)
+        self.client.set_user('admin')
+        self.client.set_password('wago')
 
         # Node objects with parameters and objects wrt. each metric
         self.imported_nodes = self._import_nodes()
@@ -395,3 +397,4 @@ class SubHandler(object):
             self.buffer.add_point(BufferEntity(entity_type='opcua', data=buffer_data))
         except Exception:
             log_event(self.cfg, self.module_name, '', 'ERR', 'Adding point into buffer failed')
+

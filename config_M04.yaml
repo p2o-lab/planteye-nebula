@@ -1,0 +1,29 @@
+---
+opcua:
+  url: opc.tcp://10.6.51.40:4840
+  number_of_reconnections: -1
+  reconnect_interval: 10000
+buffer:
+  max_size: 10000
+influxdb:
+  host: 127.0.0.1
+  port: 8086
+  user: root
+  password: root
+  database: M04
+  db_user: db_user
+  db_password: db_password
+  reconnect_interval: 10000
+  write_interval: 3000
+event_logger:
+  publish: false
+  print_level: DEBUG
+metrics:
+- metric_id: '1'
+  measurement: data_assemblies
+  tagname: F00_S1011
+  variable: V
+  nodeNamespace: 4
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Sensors_F00.F00_S1011.V'
+  method: polled
+  interval: 1000
