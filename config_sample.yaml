@@ -14,7 +14,7 @@ influxdb:
   db_user: db_user
   db_password: db_password
   reconnect_interval: 10000
-  write_interval: 3000
+  write_interval: 10000
 event_logger:
   publish: false
   print_level: DEBUG
