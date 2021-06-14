@@ -1,53 +1,100 @@
----
-opcua:
-  url: opc.tcp://10.6.51.130:4840
-  number_of_reconnections: -1
-  reconnect_interval: 10000
 buffer:
   max_size: 10000
-influxdb:
-  host: 127.0.0.1
-  port: 8086
-  user: root
-  password: root
-  database: M13
-  db_user: db_user
-  db_password: db_password
-  reconnect_interval: 10000
-  write_interval: 3000
 event_logger:
-  publish: false
   print_level: DEBUG
+  publish: false
+influxdb:
+  database: MTP_M13_GasControlModule
+  db_password: db_password
+  db_user: db_user
+  host: 10.4.53.57
+  password: root
+  port: 8086
+  reconnect_interval: 10000
+  user: root
+  write_interval: 10000
 metrics:
-- metric_id: '1'
+- interval: 1000
   measurement: data_assemblies
-  tagname: F3021
-  variable: V
-  nodeNamespace: 4
-  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Sensors.F3021.V'
   method: polled
-  interval: 1000
-- metric_id: '2'
-  measurement: data_assemblies
-  tagname: VC3020
-  variable: Pos
+  metric_id: '1'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.OpenFbk'
   nodeNamespace: 4
-  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.Pos'
+  tagname: Actuators.VC3020.OpenFbk
+  variable: OpenFbk
+- interval: 1000
+  measurement: data_assemblies
   method: polled
-  interval: 1000
-- metric_id: '3'
-  measurement: data_assemblies
-  tagname: VC3020
-  variable: PosFbk
+  metric_id: '2'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.CloseFbk'
   nodeNamespace: 4
+  tagname: Actuators.VC3020.CloseFbk
+  variable: CloseFbk
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '3'
   nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.PosFbk'
-  method: polled
-  interval: 1000
-- metric_id: '4'
-  measurement: data_assemblies
-  tagname: VV3030
-  variable: Ctrl
   nodeNamespace: 4
-  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VV3030.Ctrl'
+  tagname: Actuators.VC3020.PosFbk
+  variable: PosFbk
+- interval: 1000
+  measurement: data_assemblies
   method: polled
-  interval: 1000
+  metric_id: '4'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.Pos'
+  nodeNamespace: 4
+  tagname: Actuators.VC3020.Pos
+  variable: Pos
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '5'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VC3020.PosRbk'
+  nodeNamespace: 4
+  tagname: Actuators.VC3020.PosRbk
+  variable: PosRbk
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '6'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VV3030.OpenFbk'
+  nodeNamespace: 4
+  tagname: Actuators.VV3030.OpenFbk
+  variable: OpenFbk
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '7'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VV3030.CloseFbk'
+  nodeNamespace: 4
+  tagname: Actuators.VV3030.CloseFbk
+  variable: CloseFbk
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '8'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Actuators.VV3030.Ctrl'
+  nodeNamespace: 4
+  tagname: Actuators.VV3030.Ctrl
+  variable: Ctrl
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '9'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Sensors.F3021.V'
+  nodeNamespace: 4
+  tagname: Sensors.F3021.V
+  variable: V
+- interval: 1000
+  measurement: data_assemblies
+  method: polled
+  metric_id: '10'
+  nodeId: '|var|WAGO 750-8212 PFC200 G2 2ETH RS.Application.Services.Service_Transfer_Media.Flow_Read.V'
+  nodeNamespace: 4
+  tagname: Services.Service_Transfer_Media.Flow_Read.V
+  variable: V
+opcua:
+  number_of_reconnections: -1
+  reconnect_interval: 10000
+  url: opc.tcp://10.6.51.130:4840

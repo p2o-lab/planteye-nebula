@@ -193,7 +193,7 @@
                     },
                     "nodeNamespace": {
                         "$id": "#/properties/metrics/items/properties/nodens",
-                        "type": "integer",
+                        "type": ["string", "integer"],
                         "title": "Node namespace"
                     },
                     "nodeId": {
